@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Order history{% endblock %}
+
+{% block content %}
+    <h1>Order history</h1>
+    <br>
+    {% for order in orders %}
+        <h2>Order №{{ order.pk }}</h2>
+        {{order.created }}
+        <br>
+        {% for item in items %}
+            {% if item.order.pk == order.pk %}
+                {{ item.product }} &nbsp;&nbsp;|&nbsp;&nbsp;
+                ${{ item.price }} &nbsp;&nbsp;|&nbsp;&nbsp;
+                {{ item.quantity }}pc &nbsp;&nbsp;|&nbsp;&nbsp;
+            {% endif %}<br>
+        {% endfor %}
+        <p>Total: ${{ order.get_total_cost }}</p>
+        <hr>
+    {% endfor %}
+{% endblock %}
