@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Error{% endblock %}
+
+{% block content %}
+    <h1>Error</h1>
+    <p>Your cart is empty or you already made order
+       <p class="text-right">
+        <a href="{% url 'home_view' %}" class="button light">To shop</a>
+    </p>
+{% endblock %}
